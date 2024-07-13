@@ -180,6 +180,59 @@ namespace LHJ { namespace LD {
 
 	// 용도가 다르나 기능자체는 동일할 경우에 다른 이름으로 사용할 수 있습니다.
 	using Delay = Gauge;
+
+
+	/// <summary>
+	/// 시간이 지났는지 체킹하는 소자
+	/// </summary>
+	class TimeChecker
+	{
+	public:
+		TimeChecker() {}
+		TimeChecker(float fInterval)
+			: fMax(fInterval) {}
+		TimeChecker(const TimeChecker& rhs)
+			: fTime(rhs.fTime), fMax(rhs.fMax) {}
+		~TimeChecker() {}
+
+	private:
+		float	fTime = { 0.f };
+		float	fMax = { 0.f };
+		bool	bTicked = { false };
+
+	public:
+		TimeChecker operator =(float fValue)
+		{
+			fMax = fValue;
+			fTime = 0.f;
+			bTicked = false;
+
+			return (*this);
+		}
+
+	public:
+		bool Update(const float& fTimeDelta)
+		{
+			if (bTicked)
+				bTicked = false;
+
+			bool bIsChecked = false;
+			fTime += fTimeDelta;
+			while (fTime >= fMax)
+			{
+				fTime -= fMax;
+				bIsChecked = true;
+			}
+
+			return bTicked = bIsChecked;
+		}
+
+		bool IsTicked()
+		{
+			return bTicked;
+		}
+
+	};
 }}
 
 // using namespace LHJ -> 제작자 식별을 위해 쓰임, 제작자에 따라 다른 네임스페이스를 사용합니다.
