@@ -1,0 +1,45 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+#*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+#*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.blend1
+
+
+# 컴파일 데이터 폴더
+.vs/
+Bin/
+Intermediate/
+ipch/
+Reference/Library/Engine/
+
+#*.VC.db
+Tool/Include/Tool.aps
+imgui.ini
