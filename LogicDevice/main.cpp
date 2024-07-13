@@ -16,6 +16,5 @@ int main()
 	cout << HP.Percent() << endl;
 	cout << Delay.Percent() << endl;
 
-
 	return 0;
 }
